@@ -1,0 +1,16 @@
+For now, I have done:
+
+ASP.NET MVC Fundamentals
+  Action Results
+  Action Parameters
+  Convention-based Routing
+  Attribute Routing
+  Razor Views
+
+WORKING WITH DATA
+  The foundamental of entity framework Code-first Migrations workflow
+  Seeding the Database
+  Overriding Conventions
+  Querying Objects
+  Eager Loading for relevant object 
+  
