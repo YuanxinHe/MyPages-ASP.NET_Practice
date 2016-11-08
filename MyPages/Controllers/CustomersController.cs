@@ -28,14 +28,31 @@ namespace MyPages.Controllers
             var membershipTypes = _context.MemberShipTypes.ToList();
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(),
                 MemberShipTypes = membershipTypes
             };
             return View("CustomerForm",viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            /**
+             * To add data validation, we should follow 3 steps,
+             * First, add the data annotations such as [Required] to Model class,
+             * Second, use ModelState.IsValid preventing invalid data, is the 
+             * data is invalid, it return the same view.
+             * Third, add invalid error message to our form. **/
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel()
+                {
+                    Customer = customer,
+                    MemberShipTypes = _context.MemberShipTypes.ToList()
+                };
+                return View("CustomerForm",viewModel);
+            }
             if (customer.Id == 0 )
                 _context.Customers.Add(customer);
             else
