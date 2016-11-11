@@ -39,6 +39,7 @@ namespace MyPages.Controllers.Api
         {
             if (!ModelState.IsValid)
                 return BadRequest();
+            movieDto.DateAdded = DateTime.Now;
             var movie = Mapper.Map<MovieDto, Movie>(movieDto);
             _context.Movies.Add(movie);
             _context.SaveChanges();
@@ -48,7 +49,7 @@ namespace MyPages.Controllers.Api
         }
 
         // PUT /api/movies/1
-        [HttpPost]
+        [HttpPut]
         public void UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -63,7 +64,7 @@ namespace MyPages.Controllers.Api
         }
 
         // Delete /api/movies/1
-        [HttpPost]
+        [HttpDelete]
         public void DeleteMovie(int id)
         {
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
