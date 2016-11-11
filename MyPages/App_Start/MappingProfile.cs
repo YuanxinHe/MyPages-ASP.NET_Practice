@@ -15,6 +15,8 @@ namespace MyPages.App_Start
         {
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<CustomerDto, Customer>();
+            Mapper.CreateMap<MovieDto, Movie>();
+            Mapper.CreateMap<Movie, MovieDto>();
         }
     }
 }
